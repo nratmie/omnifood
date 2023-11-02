@@ -1,0 +1,742 @@
+/******************************/
+/* HEADER */
+/******************************/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: 9.6rem; /* we need fixed height to make header sticky */
+    padding: 0 4.8rem;
+
+    background-color: #fdf2e9;
+}
+
+.logo {
+    height: 2.2rem;
+}
+
+/******************************/
+/* NAVIGATION */
+/******************************/
+
+.main-nav-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4.8rem;
+
+    list-style: none;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+    display: inline-block;
+
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+    color: #cf711f;
+}
+
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+    padding: 1.2rem 2.4rem;
+
+    color: #fff;
+    background-color: #e67e22;
+
+    border-radius: 9px;
+}
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active {
+    background-color: #cf711f;
+} 
+
+/* MOBILE */
+.btn-mobile-nav {
+    display: none;
+
+    border: none;
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+.icon-mobile-nav {
+    height: 4.8rem;
+    width: 4.8rem;
+
+    color: #333;
+}
+
+.icon-mobile-nav[name="close-outline"] {
+    display: none;
+}
+
+/* STICKY NAVIGATION */
+.sticky .header {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 8rem; /* fixed height of 80px to manipulate by js */
+    padding-top: 0; 
+    padding-bottom: 0;
+    /* paddings: 0 so elements with different default values of padding on different browsers (native browser styling) will look the same on all browsers without each browser's native styling causing unexpected differences. */
+
+    background-color: rgba(255, 255, 255, 0.97);
+
+    box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+} /* the class "sticky" will be applied to body, all styles will be applied only if .sticky is a parent element of .header - .sticky was applied by js */
+
+.sticky .section-hero {
+    margin-top: 9.6rem;
+}
+
+.sticky .section-testimonials {
+    border-top: 8rem solid #fff;
+} /* so photos will not be overlapped by sticky nav */
+
+/******************************/
+/* HERO SECTION */
+/******************************/
+.section-hero {
+    padding: 4.8rem 0 9.6rem 0;
+
+    background-color: #fdf2e9b0;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 9.6rem;
+    max-width: 130rem;
+    margin: 0 auto;
+    padding: 0 3.2rem;
+}
+
+.hero-description {
+    margin-bottom: 4.8rem;
+
+    font-size: 2rem;
+    line-height: 1.6;
+}
+
+.delivered-meals {
+    align-items: center;
+    gap: 1.6rem;
+    display: flex;
+    margin-top: 8rem;
+}
+
+.delivered-imgs {
+    display: flex;
+}
+
+.delivered-imgs img {
+    height: 4.8rem;
+    width: 4.8rem; /* because of Safari flex bug */
+
+    border: 3px solid #fdf2e9;
+    border-radius: 50%;
+    margin-right: -1.6rem;
+}
+
+.delivered-imgs img:last-child {
+    margin-right: 0;
+}
+
+.delivered-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.delivered-text span {
+    color: #cf711f;
+    font-weight: 700;
+}
+
+.hero-img {
+    width: 100%;
+}
+
+/******************************/
+/* FEATURED IN SECTION */
+/******************************/
+.section-featured {
+    padding: 4.8rem 3.2rem 0;
+}
+
+.heading-featured-in {
+    margin-bottom: 24px;
+
+    color: #888;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+}
+
+.logos {
+    display: flex;
+    justify-content: space-around;
+}
+
+.logos img {
+    height: 3.2rem;
+
+    filter: brightness(0);
+    opacity: 50%;
+}
+
+/******************************/
+/* HOW IT WORKS SECTION */
+/******************************/
+.section-how {
+    padding: 8.6rem 0;
+}
+
+.step-number {
+    margin-bottom: 1.2rem;
+
+    color: #ddd;
+    font-size: 9.8rem;
+    font-weight: 600;
+}
+
+.step-description {
+    font-size: 1.8rem;
+    line-height: 1.8;
+}
+
+.step-img-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-img-box::before,
+.step-img-box::after {
+    position: absolute;
+    content: "";
+    display: block;
+    
+    border-radius: 50%;
+}
+
+/* trick to make 60% square ratio 
+.step-img-box::before {
+    z-index: -1;
+    width: 60%;
+    padding-bottom: 60%; ! 60% of parent element - the one with position: relative
+
+    background-color: #fdf2e9;
+} */
+
+    /* another option to make 60% square ratio: */
+   .step-img-box::before {
+    z-index: -1;
+    width: 60%; /* 60% of parent element - the one with {position: relative} */
+    aspect-ratio: 1/1;
+
+    background-color: #fdf2e9;
+} 
+
+.step-img-box::after {
+    z-index: -1;
+    width: 50%;
+    padding-bottom: 50%; 
+    /* 50% of parent element */
+
+    background-color: #fae5d3;
+}
+
+.step-img {
+    width: 35%;
+}
+
+/******************************/
+/* MEALS SECTION */
+/******************************/
+.section-meals {
+    padding: 9.6rem 0;
+}
+
+.meal {
+    box-shadow: 0 2.4rem 4.8rem rgba(0,0,0,0.075);
+    border-radius: 11px;
+    overflow: hidden;
+
+    transition: all 0.4s;
+}
+
+.meal:hover {
+    transform: translateY(-1.2rem);
+
+    box-shadow: 0 3.2rem 6.4rem rgba(0,0,0,0.06);
+}
+
+.meal-content {
+    padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+}
+
+.meal-tags {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 12px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    
+    border-radius: 100px;
+}
+
+.tag--vegetarian {
+    background-color: #51cf66;
+}
+
+.tag--vegan {
+    background-color: #94d82d;
+}
+
+.tag--paleo {
+    background-color: #ffd43b;
+}
+
+.meal-title {
+    margin-bottom: 3.2rem;
+
+    color: #333;
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+.meal-attributes {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    list-style: none;
+}
+
+.meal-attribute {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    font-size: 1.8rem;
+}
+
+.meal-icon {
+    height: 2.4rem;
+    width: 2.4rem;
+
+    color: #e67e22;
+}
+
+.meal-img {
+    width: 100%;
+}
+
+.all-recipes {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/******************************/
+/* TESTIMONIALS SECTION */
+/******************************/
+
+.section-testimonials {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    align-items: center;
+
+    background-color: #fdf2e9;
+}
+
+.testimonials-container {
+    padding: 9.6rem;
+}
+
+.testimonials {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 4.8rem;
+    column-gap: 8rem;
+}
+
+.testimonial-img {
+    width: 6.4rem;
+    margin-bottom: 1.2rem;
+
+    border-radius: 50%;
+}
+
+.testimonial-text {
+    margin-bottom: 1.6rem;
+
+    font-size: 1.8rem;
+    line-height: 1.8;
+}
+
+.testimonial-name {
+    font-size: 1.6rem;
+    color: #6f6f6f;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+    padding: 1.6rem;
+}
+
+.gallery-item {
+    overflow: hidden;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+
+    transition: all 0.4s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.1);
+}
+
+/* choose all images except for the one that is hovered */
+.gallery:has(img:hover) img:not(:hover) 
+
+{
+    transform: scale(0.85);
+
+    opacity: 0.8;
+}
+
+/******************************/
+/* PRICING SECTION */
+/******************************/
+
+.section-pricing {
+    padding: 9.6rem 0;
+}
+
+.pricing-plan {
+    width: 75%;
+    padding: 4.8rem;
+
+    border-radius: 11px;
+}
+
+.pricing-plan--starter {
+    justify-self: end;
+    padding: 4.6rem; /* fixing excessive 2px, created by border so both plans' buttons will be on the same level */
+
+    border: 2px solid #fdf2e9;
+}
+
+.pricing-plan--complete {
+    position: relative;
+
+    background-color: #fdf2e9;
+
+    overflow: hidden;
+}
+
+.pricing-plan--complete::after {
+    content: "Best value";
+    position: absolute;
+    top: 6%;
+    right: -18%;
+    padding: 0.8rem 8rem;
+
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #333;
+
+    background-color: #ffd43b;
+
+    transform: rotate(45deg);
+}
+
+.plan-header {
+    text-align: center;
+    margin-bottom: 4.8rem;
+}
+
+.plan-name {
+    margin-bottom: 3.2rem;
+
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    color: #cf711f;
+}
+
+.plan-price {
+    margin-bottom: 1.6rem;
+
+    font-size: 6.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.plan-price span {
+    margin-right: 0.8rem;
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.plan-text {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #6f6f6f;
+}
+
+.plan-sign-up {
+    margin-top: 4.8rem;
+
+    text-align: center;
+}
+
+.plan-details {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.feature-icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-bottom: 3.2rem;
+    padding: 1.6rem;
+
+    color: #e67e22;
+    background-color: #fdf2e9;
+
+    border-radius: 50%;
+}
+
+.feature-title {
+    margin-bottom: 1.6rem;
+
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.feature-text {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+}
+
+/******************************/
+/* CTA SECTION */
+/******************************/
+.section-cta {
+    padding: 9.6rem 0 12.8rem 0;
+}
+
+.cta {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    background-image: linear-gradient(
+        to right bottom, #eb984e,
+        #e67e22
+    );
+
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+    border-radius: 11px;
+
+    overflow: hidden;
+}
+
+.cta-text {
+    margin-bottom: 4.8rem;
+
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+}
+
+.cta-text-box {
+    padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+
+    color: #45260a;
+}
+
+.cta .heading-secondary {
+    margin-bottom: 3.2rem;
+
+    color: inherit;
+}
+
+.cta-img-box {
+    background-image: 
+        linear-gradient(
+        to right bottom, 
+        rgba(235, 151, 78, 0.35),
+        rgba(230, 125, 34, 0.35)),
+        url('../img/eating.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.cta-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3.2rem;
+    row-gap: 2.4rem;
+}
+
+.cta-form label {
+    display: block;
+    margin-bottom: 1.2rem;
+
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.cta-form input,
+.cta-form select {
+    width: 100%;
+    padding: 1.2rem;
+
+    font-size: 1.8rem;
+    font-family: inherit;
+    color: inherit;
+
+    border: none;
+
+    background-color: #fdf2e9;
+    border-radius: 9px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cta-form input::placeholder {
+    color: #aaa;
+}
+
+.cta *:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
+}
+
+/******************************/
+/* FOOTER */
+/******************************/
+
+.footer {
+    padding: 12.8rem 0;
+
+    border-top: 1px solid #eee;
+}
+
+.grid--footer {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+}
+
+.logo-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-heading {
+    margin-bottom: 4rem;
+
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.footer-logo {
+    display: block;
+    margin-bottom: 3.2rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 2.4rem;
+
+    list-style: none;
+}
+
+.social-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.copyright, .info {
+    margin-top: auto;
+
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: #767676;
+}
+
+.contacts {
+    font-size: 1.6rem;
+    font-style: normal;
+    line-height: 1.6rem;
+}
+
+.address {
+    margin-bottom: 2.4rem;
+}
+
+.other a {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+
+    list-style: none;
+}
+
+.footer-link:link,
+.footer-link:visited {
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: #767676;
+
+    transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active {
+    color: #333;
+} 
+
+.footer-link--social-media {
+    display: block;
+}
