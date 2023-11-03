@@ -24,8 +24,7 @@
 /* 1200px / 16 = 75em */
 @media (max-width: 75em) {
     html {
-        font-size: 56.25%;
-        /* 9px / 16px = 56.25% */
+        font-size: 56.25%; /* 9px / 16px * 100 = 56.25% */
     }
 
     .grid {
@@ -65,8 +64,7 @@
 /* 944px / 16 = 59em */
 @media (max-width: 59em) {
     html {
-        font-size: 50%;
-        /* 8px / 16px = 50% */
+        font-size: 50%; /* 8px / 16px * 100 = 50% */
     }
 
     .hero {
@@ -110,8 +108,7 @@
     }
 
     .cta {
-        grid-template-columns: 3fr 2fr;
-        /* 3/5 + 2/5 = 60% + 40% */
+        grid-template-columns: 3fr 2fr; /* 3/5 + 2/5 = 60% + 40% */
     }
 
     .cta-form {
@@ -144,12 +141,9 @@
         background-color: rgba(255, 255, 255, 0.6);
 
         transform: translateX(100%);
-
         transition: all 0.5s ease-in;
 
-
         /* Hide navigation - allows all transitions */
-
         /* 1 - Hide element visually */
         opacity: 0;
 
@@ -162,7 +156,6 @@
 
     .nav-open .main-nav {
         opacity: 1;
-
         pointer-events: auto;
         visibility: visible;
 
