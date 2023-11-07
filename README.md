@@ -17,9 +17,12 @@ A single-page website that provides information about Omnifood company
 
 ### Contact information
 Social profiles: Instagram, Facebook, Twitter 
-Links to them are not available yet
+>[!WARNING]
+>Links to them are not available yet
 
 ### Additional links
-Links are not available yet
+>[!WARNING]
+>Links are not available yet
 
-This website was created as part of a study course from Udemy.com.
+>[!NOTE]
+>This website was created as part of a study course from Udemy.com
